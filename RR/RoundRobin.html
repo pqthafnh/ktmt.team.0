@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta name="description" content="Round Robin CPU Scheduling">
+    <title>Round Robin CPU Scheduling</title>
+    <link rel="stylesheet" href="../dashboard/style.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Page Transition Overlay (denser continuous blossoms) -->
+    <div class="page-transition-overlay">
+        <svg class="blossom-svg" viewBox="-12 -12 24 24" style="left:2%; --size:48px; --delay:-10.8s; --drift:60px; --fall-duration:11s;"></svg>
+        <svg class="blossom-svg" viewBox="-12 -12 24 24" style="left:8%; --size:36px; --delay:-9.6s; --drift:40px; --fall-duration:9.2s;"></svg>
+        <svg class="blossom-svg" viewBox="-12 -12 24 24" style="left:14%; --size:52px; --delay:-8.8s; --drift:80px; --fall-duration:10.4s;"></svg>
+        <svg class="blossom-svg" viewBox="-12 -12 24 24" style="left:20%; --size:30px; --delay:-8.0s; --drift:30px; --fall-duration:8.6s;"></svg>
+        <svg class="blossom-svg" viewBox="-12 -12 24 24" style="left:26%; --size:40px; --delay:-7.2s; --drift:50px; --fall-duration:9s;"></svg>
+        <svg class="blossom-svg" viewBox="-12 -12 24 24" style="left:32%; --size:26px; --delay:-6.4s; --drift:28px; --fall-duration:7.8s;"></svg>
+        <svg class="blossom-svg" viewBox="-12 -12 24 24" style="left:38%; --size:44px; --delay:-5.6s; --drift:92px; --fall-duration:10s;"></svg>
+        <svg class="blossom-svg" viewBox="-12 -12 24 24" style="left:44%; --size:34px; --delay:-4.8s; --drift:36px; --fall-duration:8.4s;"></svg>
+        <svg class="blossom-svg" viewBox="-12 -12 24 24" style="left:50%; --size:28px; --delay:-4.0s; --drift:44px; --fall-duration:8.8s;"></svg>
+        <svg class="blossom-svg" viewBox="-12 -12 24 24" style="left:56%; --size:60px; --delay:-3.4s; --drift:140px; --fall-duration:11.6s;"></svg>
+        <svg class="blossom-svg" viewBox="-12 -12 24 24" style="left:62%; --size:22px; --delay:-2.6s; --drift:22px; --fall-duration:7.6s;"></svg>
+        <svg class="blossom-svg" viewBox="-12 -12 24 24" style="left:68%; --size:50px; --delay:-2.0s; --drift:100px; --fall-duration:10.8s;"></svg>
+        <svg class="blossom-svg" viewBox="-12 -12 24 24" style="left:74%; --size:30px; --delay:-1.4s; --drift:40px; --fall-duration:8.2s;"></svg>
+        <svg class="blossom-svg" viewBox="-12 -12 24 24" style="left:80%; --size:46px; --delay:-0.8s; --drift:70px; --fall-duration:9.6s;"></svg>
+        <svg class="blossom-svg" viewBox="-12 -12 24 24" style="left:86%; --size:38px; --delay:-0.4s; --drift:36px; --fall-duration:8.6s;"></svg>
+        <svg class="blossom-svg" viewBox="-12 -12 24 24" style="left:92%; --size:28px; --delay:-0.2s; --drift:46px; --fall-duration:8s;"></svg>
+
+        <div class="transition-spinner">
+            <div class="spinner-circle"></div>
+            <p class="transition-text">Loading...</p>
+        </div>
+    </div>
+
+    <!-- Animated Tech Network Background -->
+    <svg class="tech-network" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice">
+        <defs>
+            <filter id="glow">
+                <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                <feMerge>
+                    <feMergeNode in="coloredBlur"/>
+                    <feMergeNode in="SourceGraphic"/>
+                </feMerge>
+            </filter>
+        </defs>
+        <line class="line line1" x1="150" y1="100" x2="400" y2="300" stroke="rgba(14, 48, 97, 0.2)" stroke-width="1"/>
+        <line class="line line2" x1="400" y1="300" x2="800" y2="200" stroke="rgba(14, 48, 97, 0.2)" stroke-width="1"/>
+        <line class="line line3" x1="800" y1="200" x2="1050" y2="400" stroke="rgba(14, 48, 97, 0.2)" stroke-width="1"/>
+        <circle class="node node1" cx="150" cy="100" r="4" fill="rgba(14, 48, 97, 0.5)" filter="url(#glow)"/>
+        <circle class="node node2" cx="400" cy="300" r="4" fill="rgba(14, 48, 97, 0.5)" filter="url(#glow)"/>
+        <circle class="node node3" cx="800" cy="200" r="4" fill="rgba(14, 48, 97, 0.5)" filter="url(#glow)"/>
+        <circle class="node node4" cx="1050" cy="400" r="4" fill="rgba(14, 48, 97, 0.5)" filter="url(#glow)"/>
+        <circle class="node node5" cx="600" cy="600" r="4" fill="rgba(30, 79, 142, 0.5)" filter="url(#glow)"/>
+    </svg>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="../index.html">Kiến Trúc Máy Tính - Team 0</a>
+            </div>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li class="nav-item">
+                    <a href="../index.html" class="nav-link">Trang chủ</a>
+                </li>
+                <li class="nav-item">
+                    <a href="../Process/Process.html" class="nav-link">Process Memory</a>
+                </li>
+                <li class="nav-item">
+                    <a href="RoundRobin.html" class="nav-link active">Round Robin</a>
+                </li>
+                <li class="nav-item">
+                    <a href="../member/members.html" class="nav-link">Thành Viên</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+
+
+        <!-- Main Content -->
+            <header class="header">
+            <h1>Round Robin</h1>
+            <p class="subtitle">Lập lịch CPU theo phương pháp Round Robin</p>
+        </header>
+        <div class="content-wrapper">
+            <div class="breadcrumb">
+            <span class="breadcrumb-item"><a href="../index.html">Trang Chủ</a></span>
+            <span class="breadcrumb-item active">Round Robin</span>
+        </div>
+
+            <!-- Input Section -->
+            <section class="input-section">
+                <h2>📝 NHẬP THÔNG TIN</h2>
+                
+                <div class="form-group">
+                    <label for="quantum">Quantum Time:</label>
+                    <input 
+                        type="number" 
+                        id="quantum" 
+                        min="1" 
+                        max="100" 
+                        value="4"
+                        placeholder="VD: 4"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="processCount">Số Tiến Trình (≤ 10):</label>
+                    <input 
+                        type="number" 
+                        id="processCount" 
+                        min="1" 
+                        max="10" 
+                        value="3"
+                        placeholder="VD: 3"
+                    >
+                </div>
+
+                <button id="generateBtn" class="btn-primary">TẠO INPUT</button>
+            </section>
+
+            <!-- Dynamic Process Input Section -->
+            <section class="process-input-section" id="processInputSection" style="display: none;">
+                <h2>⚙️ NHẬP THỜI GIAN CHO TIẾN TRÌNH</h2>
+                <div id="processInputs" class="process-inputs-container">
+                    <!-- Generated dynamically -->
+                </div>
+                <button id="executeBtn" class="btn-success" style="width: 100%; margin-top: 15px;">▶️ THỰC THI LỊCH BIỂU</button>
+            </section>
+
+            <!-- Execution Log Section -->
+            <section class="execution-section" id="executionSection" style="display: none;">
+                <h2>📋 QUÁ TRÌNH THỰC THI</h2>
+                <div id="executionLog" class="execution-log">
+                    <!-- Generated dynamically -->
+                </div>
+            </section>
+
+            <!-- Results Section -->
+            <section class="results-section" id="resultsSection" style="display: none;">
+                <h2>📊 BẢNG KẾT QUẢ ROUND ROBIN</h2>
+                
+                <div class="results-container">
+<div class="table-header">
+        <span>P</span>
+        <span>BT</span>
+        <span>CT</span>
+        <span>TAT</span>
+        <span>WT</span>
+    </div>
+    
+    <div id="resultsBody" class="results-rows">
+        </div>
+                </div>
+
+                <div class="statistics">
+                    <div class="stat-item">
+                        <span class="stat-label">Avg TAT</span>
+                        <span class="stat-value" id="avgTAT">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Avg WT</span>
+                        <span class="stat-value" id="avgWT">0</span>
+                    </div>
+                </div>
+
+                <button id="resetBtn" class="btn-secondary" style="width: 100%; margin-top: 15px;">🔄 RESET</button>
+            </section>
+
+            <!-- Status Message -->
+            <div class="status-message" id="statusMessage"></div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy;@ DESIGN AND CODE BY TEAM 0</p>
+        </footer>
+    </div>
+
+    <script src="../dashboard/script.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

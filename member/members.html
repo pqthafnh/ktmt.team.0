@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta name="description" content="KTMT Team Members - Đội ngũ phát triển">
+    <title>Thành Viên - KTMT</title>
+    <link rel="stylesheet" href="../dashboard/style.css">
+    <link rel="stylesheet" href="members-style.css">
+</head>
+<body>
+    <!-- Page Transition Overlay (denser continuous blossoms) -->
+    <div class="page-transition-overlay">
+        <svg class="blossom-svg" viewBox="-12 -12 24 24" style="left:2%; --size:48px; --delay:-10.8s; --drift:60px; --fall-duration:11s;"></svg>
+        <svg class="blossom-svg" viewBox="-12 -12 24 24" style="left:6%; --size:36px; --delay:-9.6s; --drift:40px; --fall-duration:9.2s;"></svg>
+        <svg class="blossom-svg" viewBox="-12 -12 24 24" style="left:10%; --size:52px; --delay:-8.8s; --drift:80px; --fall-duration:10.4s;"></svg>
+        <svg class="blossom-svg" viewBox="-12 -12 24 24" style="left:14%; --size:30px; --delay:-8.0s; --drift:30px; --fall-duration:8.6s;"></svg>
+        <svg class="blossom-svg" viewBox="-12 -12 24 24" style="left:18%; --size:40px; --delay:-7.2s; --drift:50px; --fall-duration:9s;"></svg>
+        <svg class="blossom-svg" viewBox="-12 -12 24 24" style="left:22%; --size:26px; --delay:-6.4s; --drift:28px; --fall-duration:7.8s;"></svg>
+        <svg class="blossom-svg" viewBox="-12 -12 24 24" style="left:26%; --size:44px; --delay:-5.6s; --drift:92px; --fall-duration:10s;"></svg>
+        <svg class="blossom-svg" viewBox="-12 -12 24 24" style="left:30%; --size:34px; --delay:-4.8s; --drift:36px; --fall-duration:8.4s;"></svg>
+        <svg class="blossom-svg" viewBox="-12 -12 24 24" style="left:34%; --size:28px; --delay:-4.0s; --drift:44px; --fall-duration:8.8s;"></svg>
+        <svg class="blossom-svg" viewBox="-12 -12 24 24" style="left:38%; --size:60px; --delay:-3.4s; --drift:140px; --fall-duration:11.6s;"></svg>
+        <svg class="blossom-svg" viewBox="-12 -12 24 24" style="left:42%; --size:22px; --delay:-2.6s; --drift:22px; --fall-duration:7.6s;"></svg>
+        <svg class="blossom-svg" viewBox="-12 -12 24 24" style="left:46%; --size:50px; --delay:-2.0s; --drift:100px; --fall-duration:10.8s;"></svg>
+        <svg class="blossom-svg" viewBox="-12 -12 24 24" style="left:50%; --size:30px; --delay:-1.4s; --drift:40px; --fall-duration:8.2s;"></svg>
+        <svg class="blossom-svg" viewBox="-12 -12 24 24" style="left:54%; --size:46px; --delay:-0.8s; --drift:70px; --fall-duration:9.6s;"></svg>
+        <svg class="blossom-svg" viewBox="-12 -12 24 24" style="left:58%; --size:38px; --delay:-0.4s; --drift:36px; --fall-duration:8.6s;"></svg>
+        <svg class="blossom-svg" viewBox="-12 -12 24 24" style="left:62%; --size:28px; --delay:-0.2s; --drift:46px; --fall-duration:8s;"></svg>
+        <svg class="blossom-svg" viewBox="-12 -12 24 24" style="left:66%; --size:54px; --delay:-0.1s; --drift:120px; --fall-duration:11s;"></svg>
+        <svg class="blossom-svg" viewBox="-12 -12 24 24" style="left:70%; --size:32px; --delay:-0.05s; --drift:32px; --fall-duration:8.4s;"></svg>
+        <svg class="blossom-svg" viewBox="-12 -12 24 24" style="left:74%; --size:42px; --delay:-0.02s; --drift:64px; --fall-duration:9.4s;"></svg>
+        <svg class="blossom-svg" viewBox="-12 -12 24 24" style="left:78%; --size:26px; --delay:0s; --drift:28px; --fall-duration:7.6s;"></svg>
+        <svg class="blossom-svg" viewBox="-12 -12 24 24" style="left:82%; --size:48px; --delay:-6.0s; --drift:90px; --fall-duration:10.2s;"></svg>
+        <svg class="blossom-svg" viewBox="-12 -12 24 24" style="left:86%; --size:36px; --delay:-3.2s; --drift:52px; --fall-duration:9s;"></svg>
+        <svg class="blossom-svg" viewBox="-12 -12 24 24" style="left:90%; --size:40px; --delay:-1.8s; --drift:60px; --fall-duration:9.6s;"></svg>
+        <svg class="blossom-svg" viewBox="-12 -12 24 24" style="left:94%; --size:34px; --delay:-0.9s; --drift:48px; --fall-duration:8.8s;"></svg>
+
+        <div class="transition-spinner">
+            <div class="spinner-circle"></div>
+            <p class="transition-text">Loading...</p>
+        </div>
+    </div>
+
+    <!-- Animated Tech Network Background -->
+    <svg class="tech-network" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice">
+        <defs>
+            <filter id="glow">
+                <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                <feMerge>
+                    <feMergeNode in="coloredBlur"/>
+                    <feMergeNode in="SourceGraphic"/>
+                </feMerge>
+            </filter>
+        </defs>
+        <line class="line line1" x1="150" y1="100" x2="400" y2="300" stroke="rgba(14, 48, 97, 0.2)" stroke-width="1"/>
+        <line class="line line2" x1="400" y1="300" x2="800" y2="200" stroke="rgba(14, 48, 97, 0.2)" stroke-width="1"/>
+        <line class="line line3" x1="800" y1="200" x2="1050" y2="400" stroke="rgba(14, 48, 97, 0.2)" stroke-width="1"/>
+        <circle class="node node1" cx="150" cy="100" r="4" fill="rgba(14, 48, 97, 0.5)" filter="url(#glow)"/>
+        <circle class="node node2" cx="400" cy="300" r="4" fill="rgba(14, 48, 97, 0.5)" filter="url(#glow)"/>
+        <circle class="node node3" cx="800" cy="200" r="4" fill="rgba(14, 48, 97, 0.5)" filter="url(#glow)"/>
+        <circle class="node node4" cx="1050" cy="400" r="4" fill="rgba(14, 48, 97, 0.5)" filter="url(#glow)"/>
+        <circle class="node node5" cx="600" cy="600" r="4" fill="rgba(30, 79, 142, 0.5)" filter="url(#glow)"/>
+    </svg>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="../index.html">Kiến Trúc Máy Tính - Team 0</a>
+            </div>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li class="nav-item">
+                    <a href="../index.html" class="nav-link">Trang chủ</a>
+                </li>
+                <li class="nav-item">
+                    <a href="../Process/Process.html" class="nav-link">Process Memory</a>
+                </li>
+                <li class="nav-item">
+                    <a href="../RR/RoundRobin.html" class="nav-link">Round Robin</a>
+                </li>
+                <li class="nav-item">
+                    <a href="members.html" class="nav-link active">Thành Viên</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!-- Header -->
+    <header class="header">
+        <h1>Thành Viên</h1>
+        <p class="subtitle">Team 0 gồm có 4 thành viên</p>
+    </header>
+
+    <!-- Main Content -->
+    <div class="content-wrapper">
+        <!-- Breadcrumb -->
+        <div class="breadcrumb">
+            <span class="breadcrumb-item"><a href="../index.html">Trang Chủ</a></span>
+            <span class="breadcrumb-item active">Thành Viên</span>
+        </div>
+
+        <!-- Members Section -->
+        <section class="members-section">
+            <div class="members-grid">
+                <!-- Member 1 -->
+                <div class="member-card">
+                    <div class="member-avatar">
+                        <img src="/avt/1.jpg" alt="Phạm Quang Thành">
+                    </div>
+                    <div class="member-info">
+                        <h3>Phạm Quang Thành</h3>
+                        <p class="member-role">LEADER</p>
+                        <p class="mssv">25150674</p>
+                    </div>
+                </div>
+
+                <!-- Member 2 -->
+                <div class="member-card">
+                    <div class="member-avatar">
+                        <img src="/avt/3.jpg" alt="Nguyễn Minh Kha">
+                    </div>
+                    <div class="member-info">
+                        <h3>Nguyễn Minh Kha</h3>
+                        <p class="member-role">MEMBER</p>
+                        <p class="mssv">25150669</p>
+                    </div>
+                </div>
+
+                <!-- Member 3 -->
+                <div class="member-card">
+                    <div class="member-avatar">
+                        <img src="/avt/4.jpg" alt="Vũ Thị Kiều Trang">
+                    </div>
+                    <div class="member-info">
+                        <h3>Vũ Thị Kiều Trang</h3>
+                        <p class="member-role">MEMBER</p>
+                        <p class="mssv">25150597</p>
+                    </div>
+                </div>
+
+                <!-- Member 4 -->
+                <div class="member-card">
+                    <div class="member-avatar">
+                        <img src="/avt/2.jpg" alt="Võ Quốc Triệu">
+                    </div>
+                    <div class="member-info">
+                        <h3>Võ Quốc Triệu</h3>
+                        <p class="member-role">MEMBER</p>
+                        <p class="mssv">25150657</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>@ DESIGN AND CODE BY TEAM 0</p>
+    </footer>
+
+    <script src="../dashboard/script.js"></script>
+</body>
+</html>
